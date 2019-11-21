@@ -1,7 +1,7 @@
 # CS6620: Advanced Computer Organization and Architecture with Lab
 # Lab Assignment-6 
 
-## Code-Conversion (Submission Deadline:27/11/19)
+## Subroutines (Submission Deadline:27/11/19)
 
 ### Part 1
 Write an assembly program for searching a given integer number in an
