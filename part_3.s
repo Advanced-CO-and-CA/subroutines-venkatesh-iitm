@@ -44,19 +44,19 @@ _start:
 	b EXIT
 
 Fibonacci:
-	stmdb sp!, {r0-r2,lr}
-	cmp r0, #1
-	beq Return_1
-	cmp r0, #2
-	beq Return_1
-	sub r0, r0, #1
-	bl Fibonacci
-	mov r2, r3
-	sub r0, r0, #1
-	bl Fibonacci
-	add r3, r3, r2
-	ldm sp!, {r0-r2,lr}
-	bx lr
+	stmdb sp!, {r0-r2,lr}	@ push r0-r2 and lr to stack
+	cmp r0, #1				@ check if n = 1 
+	beq Return_1			@ if 1 return 1
+	cmp r0, #2				@ check if n = 2
+	beq Return_1			@ if 2 return 1
+	sub r0, r0, #1			@ (n-1)
+	bl Fibonacci			@ f(n-1)
+	mov r2, r3				@ r2 = f(n-1)
+	sub r0, r0, #1			@ (n-1)-1
+	bl Fibonacci			@ f(n-2)
+	add r3, r3, r2			@ add f(n-1) and f(n-2)
+	ldm sp!, {r0-r2,lr}		@ pop r0-r2 and lr from stack
+	bx lr					@ branch to lr 
 	
 Return_1:
 	mov r3, #1		@ r1 carry return value
